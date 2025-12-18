@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminMain</class>
+ <widget class="QWidget" name="AdminMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>관리자 모드</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="admin_tab">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_menu">
+      <attribute name="title">
+       <string>메뉴 품절 관리</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_menu">
+       <item>
+        <widget class="QTableWidget" name="menu_table">
+         <column>
+          <property name="text">
+           <string>메뉴명</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>상태</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>비고</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_menu_buttons">
+         <item>
+          <widget class="QPushButton" name="btn_set_on">
+           <property name="text">
+            <string>판매중</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_set_soldout">
+           <property name="text">
+            <string>일시품절</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_orders">
+      <attribute name="title">
+       <string>주문 내역</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_orders">
+       <item>
+        <widget class="QTableWidget" name="order_table">
+         <column>
+          <property name="text">
+           <string>주문번호</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>시간</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>구분</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>메뉴</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>옵션</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>금액</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>결제수단</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_orders_buttons">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_refresh_orders">
+           <property name="text">
+            <string>새로고침</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MegaDetailPage</class>
+ <widget class="QWidget" name="MegaDetailPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>768</width>
+    <height>864</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>메뉴 상세</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+#MegaDetailPage { background:#FFF7E0; }
+
+/* 상단 타이틀 / 버튼 */
+QLabel#title_label {
+  color:#3A2D1F;
+  font:800 20pt &quot;Pretendard&quot;;
+}
+QToolButton#back_btn {
+  font:700 18pt;
+  color:#3A2D1F;
+  background:transparent;
+  border:none;
+}
+QToolButton#back_btn:hover {
+  color:#B8860B;
+}
+
+/* 🎙 대화형 AI 버튼 (상세 화면용) */
+QToolButton#voice_ai_detail_btn {
+  background:#FFFFFF;
+  border:2px solid #D4A017;
+  border-radius:22px;
+  font:700 20pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+  padding:4px;
+}
+QToolButton#voice_ai_detail_btn:hover {
+  background:#FFF3B0;
+  border-color:#FFD866;
+  color:#8C6A00;
+}
+
+/* 메뉴 정보 */
+QLabel#menu_img {
+  border:2px solid #E0D5C3;
+  border-radius:12px;
+  background:#FFFFFF;
+}
+QLabel#menu_name {
+  font:800 20pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+QLabel#menu_price {
+  font:700 18pt &quot;Pretendard&quot;;
+  color:#C4571A;
+}
+QTextBrowser#menu_desc {
+  background:#FFFFFF;
+  border:2px solid #E0D5C3;
+  border-radius:12px;
+  font:11pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+
+/* 선택 옵션 요약 */
+QLabel#selected_opt_label {
+  font:600 10pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+QPushButton#reset_opt_btn {
+  background:#F47C7C;
+  color:#FFFFFF;
+  border-radius:16px;
+  padding:6px 14px;
+  font:700 10pt &quot;Pretendard&quot;;
+}
+QPushButton#reset_opt_btn:hover {
+  background:#E05A5A;
+}
+
+/* 옵션 영역 */
+QLabel#options_title {
+  font:700 11pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+QScrollArea#opt_scroll {
+  border:2px solid #E0D5C3;
+  border-radius:12px;
+  background:#FFF8E8;
+}
+QScrollArea#opt_scroll &gt; QWidget {
+  background:transparent;
+}
+
+/* 옵션 카드 공통 스타일 */
+QFrame#opt_frame_1,
+QFrame#opt_frame_2,
+QFrame#opt_frame_3,
+QFrame#opt_frame_4,
+QFrame#opt_frame_5,
+QFrame#opt_frame_6,
+QFrame#opt_frame_7,
+QFrame#opt_frame_8,
+QFrame#opt_frame_9,
+QFrame#opt_frame_10,
+QFrame#opt_frame_11,
+QFrame#opt_frame_12 {
+  border:2px solid #E0D5C3;
+  border-radius:10px;
+  background:#FFFFFF;
+}
+QFrame#opt_frame_1:hover,
+QFrame#opt_frame_2:hover,
+QFrame#opt_frame_3:hover,
+QFrame#opt_frame_4:hover,
+QFrame#opt_frame_5:hover,
+QFrame#opt_frame_6:hover,
+QFrame#opt_frame_7:hover,
+QFrame#opt_frame_8:hover,
+QFrame#opt_frame_9:hover,
+QFrame#opt_frame_10:hover,
+QFrame#opt_frame_11:hover,
+QFrame#opt_frame_12:hover {
+  border:3px solid #FFD700;
+}
+
+/* 옵션 카드 내부 라벨 */
+QLabel[objectName^=&quot;opt_name_&quot;] {
+  font:600 10pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+QLabel[objectName^=&quot;opt_price_&quot;] {
+  font:600 9pt &quot;Pretendard&quot;;
+  color:#C4571A;
+}
+
+/* 하단 버튼 */
+QPushButton#add_cart_btn {
+  background:#3A2D1F;
+  color:#FFFFFF;
+  border-radius:18px;
+  padding:12px 18px;
+  font:800 14pt &quot;Pretendard&quot;;
+}
+QPushButton#add_cart_btn:hover {
+  background:#291F15;
+}
+QPushButton#close_btn {
+  background:#FFEAA6;
+  border:2px solid #E0D5C3;
+  border-radius:16px;
+  padding:10px 16px;
+  font:700 13pt &quot;Pretendard&quot;;
+  color:#3A2D1F;
+}
+QPushButton#close_btn:hover {
+  background:#FFD866;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="root_layout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="top_bar">
+     <item>
+      <widget class="QToolButton" name="back_btn">
+       <property name="text">
+        <string>←</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="top_spacer_left">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="title_label">
+       <property name="text">
+        <string>메뉴 상세</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="top_spacer_right">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="voice_ai_detail_btn">
+       <property name="minimumSize">
+        <size>
+         <width>46</width>
+         <height>46</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>대화형 AI 옵션 도우미</string>
+       </property>
+       <property name="text">
+        <string>🎙</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="info_layout">
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="menu_img">
+       <property name="minimumSize">
+        <size>
+         <width>220</width>
+         <height>260</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>240</width>
+         <height>280</height>
+        </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="info_right_layout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="name_price_layout">
+         <item>
+          <widget class="QLabel" name="menu_name">
+           <property name="text">
+            <string>메뉴 이름</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="np_spacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="menu_price">
+           <property name="text">
+            <string>0원</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="menu_desc">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>180</height>
+          </size>
+         </property>
+         <property name="plainText">
+          <string>메뉴 설명이 표시됩니다.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="selected_opt_layout">
+     <item>
+      <widget class="QLabel" name="selected_opt_label">
+       <property name="text">
+        <string>선택한 옵션: 선택한 옵션 없음</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="sel_spacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="reset_opt_btn">
+       <property name="text">
+        <string>초기화</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="options_title">
+     <property name="text">
+      <string>옵션 선택 (메뉴마다 옵션이 다를 수 있습니다)</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="opt_scroll">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="opt_scroll_contents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>720</width>
+        <height>640</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="opt_grid">
+       <property name="leftMargin">
+        <number>8</number>
+       </property>
+       <property name="topMargin">
+        <number>8</number>
+       </property>
+       <property name="rightMargin">
+        <number>8</number>
+       </property>
+       <property name="bottomMargin">
+        <number>8</number>
+       </property>
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QFrame" name="opt_frame_1">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v1">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_1">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_1">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_1">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QFrame" name="opt_frame_2">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v2">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_2">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_2">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_2">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QFrame" name="opt_frame_3">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v3">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_3">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_3">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_3">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QFrame" name="opt_frame_4">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v4">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_4">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_4">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_4">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QFrame" name="opt_frame_5">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v5">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_5">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_5">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_5">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QFrame" name="opt_frame_6">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v6">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_6">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_6">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_6">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QFrame" name="opt_frame_7">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v7">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_7">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_7">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_7">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QFrame" name="opt_frame_8">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v8">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_8">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_8">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_8">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QFrame" name="opt_frame_9">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v9">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_9">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_9">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_9">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QFrame" name="opt_frame_10">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v10">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_10">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_10">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_10">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QFrame" name="opt_frame_11">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v11">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_11">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_11">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_11">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QFrame" name="opt_frame_12">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="opt_v12">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="opt_img_12">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>90</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_name_12">
+            <property name="text">
+             <string>옵션 이름</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="opt_price_12">
+            <property name="text">
+             <string>+0원</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="bottom_btn_layout">
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="close_btn">
+       <property name="text">
+        <string>닫기</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_cart_btn">
+       <property name="text">
+        <string>장바구니 담기</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

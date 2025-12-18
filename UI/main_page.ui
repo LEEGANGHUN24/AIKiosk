@@ -1,0 +1,1415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MegaMain</class>
+ <widget class="QWidget" name="MegaMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>768</width>
+    <height>864</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>768</width>
+    <height>864</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>768</width>
+    <height>864</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Mega Kiosk</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+#MegaMain { background:#FFF7E0; }
+QLabel#brand { color:#FFFFFF; font:800 20pt &quot;Pretendard&quot;; letter-spacing:0.5px; }
+QLabel#mode_badge { color:#3A2D1F; background:#FFD866; border-radius:12px; padding:4px 10px; font:700 11pt &quot;Pretendard&quot;; }
+QToolButton#back_btn { color:#FFFFFF; background:transparent; border:none; font:700 18pt; }
+QToolButton#back_btn:hover { color:#FFD866; }
+
+QTabWidget::pane { border:2px solid #E0D5C3; border-radius:12px; background:#FFFFFF; }
+QTabBar::tab { padding:10px 16px; font:700 12pt &quot;Pretendard&quot;; color:#3A2D1F; background:#FFEAA6; border:2px solid #E0D5C3; border-bottom:none; border-top-left-radius:10px; border-top-right-radius:10px; margin-right:4px; }
+QTabBar::tab:selected { background:#FFFFFF; }
+QTabBar::scroller { width:0px; }
+QTabBar QToolButton { width:0px; height:0px; border:none; padding:0; margin:0; }
+
+QFrame#cart_bar { background:#FFF1AD; border:2px solid #E0D5C3; border-radius:16px; }
+QLabel#cart_total { font:800 14pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QPushButton#to_order_check_btn { background:#3A2D1F; color:#FFFFFF; border-radius:16px; padding:12px 16px; font:800 14pt &quot;Pretendard&quot;; }
+QPushButton#to_order_check_btn:hover { background:#291F15; }
+
+QLabel#page_title { color:#3A2D1F; font:800 20pt &quot;Pretendard&quot;; }
+QTableWidget#order_table { background:#FFFFFF; border:2px solid #E0D5C3; border-radius:12px; }
+QPushButton#order_back_btn, QPushButton#order_next_btn,
+QPushButton#pay_back_btn, QPushButton#pay_next_btn,
+QPushButton#charge_done_btn {
+  font:700 14pt &quot;Pretendard&quot;; border-radius:16px; padding:12px 16px; border:3px solid #B38B00; background:#FFFFFF; color:#2D2D2D;
+}
+QPushButton#order_next_btn, QPushButton#pay_next_btn, QPushButton#charge_done_btn { background:#3A2D1F; color:#FFFFFF; border-color:#D2A400; }
+QPushButton#order_back_btn:hover, QPushButton#pay_back_btn:hover { background:#FFF3B0; border-color:#8C6A00; }
+
+QFrame#pay_grid { background:#FFFFFF; border:2px solid #E0D5C3; border-radius:16px; }
+QFrame#pay_grid QPushButton { background:#FFEAA6; border:2px solid #E0D5C3; border-radius:14px; padding:16px; font:800 14pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QFrame#pay_grid PushButton:hover { background:#FFD866; }
+
+QLabel#amount_label { font:800 18pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QLabel#charge_msg { font:800 18pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QLabel#charge_tip { font:600 12pt &quot;Pretendard&quot;; color:#3A2D1F; }
+
+/* ================================
+ * 메뉴 프레임(1~18) 황금색 테두리
+ * ================================ */
+QFrame#menu_frame_1,
+QFrame#menu_frame_2,
+QFrame#menu_frame_3,
+QFrame#menu_frame_4,
+QFrame#menu_frame_5,
+QFrame#menu_frame_6,
+QFrame#menu_frame_7,
+QFrame#menu_frame_8,
+QFrame#menu_frame_9,
+QFrame#menu_frame_10,
+QFrame#menu_frame_11,
+QFrame#menu_frame_12,
+QFrame#menu_frame_13,
+QFrame#menu_frame_14,
+QFrame#menu_frame_15,
+QFrame#menu_frame_16,
+QFrame#menu_frame_17,
+QFrame#menu_frame_18 {
+  border: 3px solid #D4A017;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+/* hover 강조 */
+QFrame#menu_frame_1:hover,
+QFrame#menu_frame_2:hover,
+QFrame#menu_frame_3:hover,
+QFrame#menu_frame_4:hover,
+QFrame#menu_frame_5:hover,
+QFrame#menu_frame_6:hover,
+QFrame#menu_frame_7:hover,
+QFrame#menu_frame_8:hover,
+QFrame#menu_frame_9:hover,
+QFrame#menu_frame_10:hover,
+QFrame#menu_frame_11:hover,
+QFrame#menu_frame_12:hover,
+QFrame#menu_frame_13:hover,
+QFrame#menu_frame_14:hover,
+QFrame#menu_frame_15:hover,
+QFrame#menu_frame_16:hover,
+QFrame#menu_frame_17:hover,
+QFrame#menu_frame_18:hover {
+  border: 4px solid #FFD700;
+}
+
+/* === 대화형 AI 버튼 (메뉴화면용) === */
+QToolButton#voice_ai_menu_btn {
+    background:#FFFFFF;
+    border:2px solid #D4A017;
+    border-radius:22px;
+    font:700 20pt &quot;Pretendard&quot;;
+    color:#3A2D1F;
+    padding:4px;
+}
+QToolButton#voice_ai_menu_btn:hover {
+    background:#FFF3B0;
+    border-color:#FFD866;
+    color:#8C6A00;
+}
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="root" stretch="0,1">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="topBarLayout">
+     <item>
+      <widget class="QToolButton" name="back_btn">
+       <property name="text">
+        <string>←</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="center_left_sp">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="brand">
+       <property name="text">
+        <string>MEGA COFFEE</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="center_right_sp">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Policy::Maximum</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>130</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="right_btn_layout">
+       <item>
+        <widget class="QLabel" name="mode_badge">
+         <property name="text">
+          <string>모드없음</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="voice_ai_menu_btn">
+         <property name="minimumSize">
+          <size>
+           <width>46</width>
+           <height>46</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>대화형 AI 음성 주문</string>
+         </property>
+         <property name="text">
+          <string>🎙</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stack">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="main_page">
+      <layout class="QVBoxLayout" name="main_layout" stretch="0,0,1,0">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text">
+          <string>메뉴 선택</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="category_bar">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="cat_left_btn">
+           <property name="minimumSize">
+            <size>
+             <width>36</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>◀</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTabWidget" name="category_tab">
+           <property name="currentIndex">
+            <number>3</number>
+           </property>
+           <widget class="QWidget" name="tab_decaf">
+            <attribute name="title">
+             <string>디카페인</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="decaf_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_coffee_ice">
+            <attribute name="title">
+             <string>커피(ICE)</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="coffee_ice_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_coffee_hot">
+            <attribute name="title">
+             <string>커피(HOT)</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="coffee_hot_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_smoothie">
+            <attribute name="title">
+             <string>스무디</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="smoothie_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_ade">
+            <attribute name="title">
+             <string>에이드</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="ade_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_tea">
+            <attribute name="title">
+             <string>티</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="tea_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_beverage">
+            <attribute name="title">
+             <string>음료</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="beverage_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_dessert">
+            <attribute name="title">
+             <string>디저트</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="dessert_layout"/>
+           </widget>
+           <widget class="QWidget" name="tab_coldbrew">
+            <attribute name="title">
+             <string>콜드브루</string>
+            </attribute>
+            <layout class="QVBoxLayout" name="coldbrew_layout"/>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="cat_right_btn">
+           <property name="minimumSize">
+            <size>
+             <width>36</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>▶</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="carousel_bar">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="menu_left_btn">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>◀</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QStackedWidget" name="menu_car">
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="page_1">
+            <layout class="QGridLayout" name="frame_1_grid">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QFrame" name="menu_frame_1">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_1">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_1">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_1">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QFrame" name="menu_frame_2">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_2">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_2">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_2">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QFrame" name="menu_frame_3">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_3">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_3">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_3">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QFrame" name="menu_frame_4">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_4">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_4">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_4">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_4">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QFrame" name="menu_frame_5">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_5">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_5">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_5">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QFrame" name="menu_frame_6">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_6">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_6">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_6">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_6">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QFrame" name="menu_frame_7">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_7">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_7">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_7">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_7">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QFrame" name="menu_frame_8">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_8">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_8">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_8">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_8">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QFrame" name="menu_frame_9">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_9">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_9">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_9">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_9">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_2">
+            <layout class="QGridLayout" name="frame_2_grid">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QFrame" name="menu_frame_10">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_10">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_10">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_10">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_10">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QFrame" name="menu_frame_11">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_11">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_11">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_11">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_11">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QFrame" name="menu_frame_12">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_12">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_12">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_12">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_12">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QFrame" name="menu_frame_13">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_13">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_13">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_13">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_13">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QFrame" name="menu_frame_14">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_14">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_14">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_14">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_14">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QFrame" name="menu_frame_15">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_15">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_15">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_15">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_15">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QFrame" name="menu_frame_16">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_16">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_16">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_16">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_16">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QFrame" name="menu_frame_17">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_17">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_17">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_17">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_17">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QFrame" name="menu_frame_18">
+               <property name="minimumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>190</width>
+                 <height>190</height>
+                </size>
+               </property>
+               <layout class="QVBoxLayout" name="mv_18">
+                <property name="spacing">
+                 <number>4</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="menu_img_18">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_name_label_18">
+                  <property name="text">
+                   <string>메뉴명</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="menu_price_label_18">
+                  <property name="text">
+                   <string>0원</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="menu_right_btn">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>▶</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QFrame" name="cart_bar">
+         <layout class="QHBoxLayout" name="cart_bar_layout">
+          <item>
+           <widget class="QLabel" name="cart_total">
+            <property name="text">
+             <string>총 0원 (0개)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="cart_sp">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="to_order_check_btn">
+            <property name="text">
+             <string>주문 확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

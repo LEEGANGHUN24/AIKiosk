@@ -1,0 +1,17 @@
+FROM ./eeve-korean-2.8b-v1.0.Q8_0.gguf
+
+# 샘플링 파라미터 (원하면 조절 가능)
+PARAMETER temperature 0.6
+PARAMETER top_p 0.9
+PARAMETER num_predict 2048
+
+# 한국어 어시스턴트 시스템 프롬프트
+SYSTEM """
+너는 한국어에 최적화된 AI 어시스턴트야.
+모든 대답은 친절하고 자세한 한국어로 대답해.
+"""
+
+# EEVE는 Llama2 스타일 채팅 포맷 기반이라 INST 템플릿 사용
+TEMPLATE """
+<s>[INST] {{ .Prompt }} [/INST]
+"""

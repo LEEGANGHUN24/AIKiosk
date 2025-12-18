@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MegaMain</class>
+ <widget class="QWidget" name="MegaMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>768</width>
+    <height>864</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>768</width>
+    <height>864</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>768</width>
+    <height>864</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Mega Kiosk</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+#MegaMain { background:#FFF7E0; }
+#topBar { background:#3A2D1F; }
+QLabel#brand { color:#FFFFFF; font:800 20pt &quot;Pretendard&quot;; letter-spacing:0.5px; }
+QLabel#mode_badge { color:#3A2D1F; background:#FFD866; border-radius:12px; padding:4px 10px; font:700 11pt &quot;Pretendard&quot;; }
+QToolButton#settings_btn, QToolButton#back_btn { color:#FFFFFF; background:transparent; border:none; font:700 18pt; }
+QToolButton#settings_btn:hover, QToolButton#back_btn:hover { color:#FFD866; }
+
+QTabWidget::pane { border:2px solid #E0D5C3; border-radius:12px; background:#FFFFFF; }
+QTabBar::tab { padding:10px 16px; font:700 12pt &quot;Pretendard&quot;; color:#3A2D1F; background:#FFEAA6; border:2px solid #E0D5C3; border-bottom:none; border-top-left-radius:10px; border-top-right-radius:10px; margin-right:4px; }
+QTabBar::tab:selected { background:#FFFFFF; }
+
+QFrame#menu_card { background:#FFFFFF; border:2px solid #E0D5C3; border-radius:12px; }
+QLabel#item_name { font:700 11pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QLabel#item_price { font:800 12pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QPushButton#add_btn { background:#3A2D1F; color:#FFFFFF; border-radius:10px; padding:8px 10px; font:700 10pt &quot;Pretendard&quot;; }
+QPushButton#add_btn:hover { background:#291F15; }
+
+QFrame#cart_bar { background:#FFF1AD; border:2px solid #E0D5C3; border-radius:16px; }
+QLabel#cart_total { font:800 14pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QPushButton#to_order_check_btn { background:#3A2D1F; color:#FFFFFF; border-radius:16px; padding:12px 16px; font:800 14pt &quot;Pretendard&quot;; }
+QPushButton#to_order_check_btn:hover { background:#291F15; }
+
+QLabel#page_title { color:#3A2D1F; font:800 20pt &quot;Pretendard&quot;; }
+QTableWidget#order_table { background:#FFFFFF; border:2px solid #E0D5C3; border-radius:12px; }
+QPushButton#order_back_btn, QPushButton#order_next_btn,
+QPushButton#pay_back_btn, QPushButton#pay_next_btn,
+QPushButton#charge_done_btn {
+  font:700 14pt &quot;Pretendard&quot;; border-radius:16px; padding:12px 16px; border:3px solid #B38B00; background:#FFFFFF; color:#2D2D2D;
+}
+QPushButton#order_next_btn, QPushButton#pay_next_btn, QPushButton#charge_done_btn { background:#3A2D1F; color:#FFFFFF; border-color:#D2A400; }
+QPushButton#order_back_btn:hover, QPushButton#pay_back_btn:hover { background:#FFF3B0; border-color:#8C6A00; }
+
+QFrame#pay_grid { background:#FFFFFF; border:2px solid #E0D5C3; border-radius:16px; }
+QFrame#pay_grid QPushButton { background:#FFEAA6; border:2px solid #E0D5C3; border-radius:14px; padding:16px; font:800 14pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QFrame#pay_grid QPushButton:hover { background:#FFD866; }
+
+QLabel#amount_label { font:800 18pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QLabel#charge_msg { font:800 18pt &quot;Pretendard&quot;; color:#3A2D1F; }
+QLabel#charge_tip { font:600 12pt &quot;Pretendard&quot;; color:#3A2D1F; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="root" stretch="0,1">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="topBarLayout">
+     <item>
+      <widget class="QToolButton" name="back_btn">
+       <property name="text">
+        <string>←</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="left_sp">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="brand">
+       <property name="text">
+        <string>MEGA COFFEE</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="right_sp">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="mode_badge">
+       <property name="text">
+        <string>모드없음</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stack">
+     <property name="currentIndex">
+      <number>2</number>
+     </property>
+     <widget class="QWidget" name="main_page">
+      <layout class="QVBoxLayout" name="main_layout" stretch="0,1,0">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text">
+          <string>메뉴 선택</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTabWidget" name="category_tab">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_drink">
+          <attribute name="title">
+           <string>음료</string>
+          </attribute>
+          <layout class="QGridLayout" name="drink_grid">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="menu_card">
+             <layout class="QVBoxLayout" name="mc1">
+              <item>
+               <widget class="QLabel" name="item_name">
+                <property name="text">
+                 <string>아메리카노</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="item_price">
+                <property name="text">
+                 <string>3,000원</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="add_btn">
+                <property name="text">
+                 <string>담기</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QFrame" name="menu_card">
+             <layout class="QVBoxLayout" name="mc2">
+              <item>
+               <widget class="QLabel" name="item_name">
+                <property name="text">
+                 <string>카페라떼</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="item_price">
+                <property name="text">
+                 <string>3,800원</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="add_btn">
+                <property name="text">
+                 <string>담기</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QFrame" name="menu_card">
+             <layout class="QVBoxLayout" name="mc3">
+              <item>
+               <widget class="QLabel" name="item_name">
+                <property name="text">
+                 <string>바닐라라떼</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="item_price">
+                <property name="text">
+                 <string>4,200원</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="add_btn">
+                <property name="text">
+                 <string>담기</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_bakery">
+          <attribute name="title">
+           <string>베이커리</string>
+          </attribute>
+          <layout class="QGridLayout" name="bakery_grid">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="menu_card">
+             <layout class="QVBoxLayout" name="bc1">
+              <item>
+               <widget class="QLabel" name="item_name">
+                <property name="text">
+                 <string>베이글</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="item_price">
+                <property name="text">
+                 <string>2,500원</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="add_btn">
+                <property name="text">
+                 <string>담기</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="cart_bar">
+         <layout class="QHBoxLayout" name="cart_bar_layout">
+          <item>
+           <widget class="QLabel" name="cart_total">
+            <property name="text">
+             <string>총 0원 (0개)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="cart_sp">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="to_order_check_btn">
+            <property name="text">
+             <string>주문 확인</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="order_check_page">
+      <layout class="QVBoxLayout" name="oc_layout" stretch="0,1,0">
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text">
+          <string>주문 내역 확인</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="order_table">
+         <column>
+          <property name="text">
+           <string>메뉴</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>수량</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>금액</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="oc_btns">
+         <item>
+          <widget class="QPushButton" name="order_back_btn">
+           <property name="text">
+            <string>메뉴로</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="oc_sp">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="order_next_btn">
+           <property name="text">
+            <string>결제수단 선택</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="payment_choose_page">
+      <layout class="QVBoxLayout" name="pc_layout" stretch="0,1,0">
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text">
+          <string>결제수단 선택</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="pay_grid">
+         <layout class="QGridLayout" name="pay_grid_layout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pay_card">
+            <property name="text">
+             <string>신용/체크카드</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="pay_appcard">
+            <property name="text">
+             <string>앱카드</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pay_npay">
+            <property name="text">
+             <string>네이버페이</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="pay_kakaopay">
+            <property name="text">
+             <string>카카오페이</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="pay_kbpay">
+            <property name="text">
+             <string>KB Pay</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="pc_btns">
+         <item>
+          <widget class="QLabel" name="amount_label">
+           <property name="text">
+            <string>결제금액: 0원</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="pc_sp">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pay_back_btn">
+           <property name="text">
+            <string>주문 확인으로</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pay_next_btn">
+           <property name="text">
+            <string>결제 진행</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="charge_page">
+      <layout class="QVBoxLayout" name="ch_layout" stretch="0,1,0">
+       <item>
+        <widget class="QLabel" name="page_title">
+         <property name="text">
+          <string>결제 진행 중</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="ch_center">
+         <item>
+          <widget class="QLabel" name="charge_msg">
+           <property name="text">
+            <string>단말기에 카드를 접촉하거나, 앱 결제 안내를 확인해 주세요.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="charge_tip">
+           <property name="text">
+            <string>결제 완료 후 자동으로 주문번호가 발급됩니다.</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="ch_btns">
+         <item>
+          <spacer name="ch_sp">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="charge_done_btn">
+           <property name="text">
+            <string>완료</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OpeningPage</class>
+ <widget class="QWidget" name="OpeningPage">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>768</width><height>864</height></rect>
+  </property>
+  <property name="minimumSize"><size><width>768</width><height>864</height></size></property>
+  <property name="maximumSize"><size><width>768</width><height>864</height></size></property>
+  <property name="windowTitle"><string>Opening Page</string></property>
+
+  <!-- === 스타일시트 (메가커피 브랜드) === -->
+  <property name="styleSheet">
+   <string notr="true">
+#OpeningPage {
+    background-color: #FFCC00;
+}
+
+/* Title */
+QLabel#title_label {
+    font: 800 26pt "Pretendard";
+    color: #2D2D2D;
+    letter-spacing: 1px;
+}
+
+/* Buttons */
+QPushButton {
+    font: 700 18pt "Pretendard";
+    border-radius: 20px;
+    padding: 14px 16px;
+    border: 3px solid #B38B00;
+    background-color: #FFFFFF;
+    color: #2D2D2D;
+    transition: all 0.2s;
+}
+QPushButton:hover {
+    background-color: #FFF3B0;
+    border: 3px solid #8C6A00;
+}
+QPushButton:pressed {
+    background-color: #E6B800;
+}
+
+/* To-Go Button */
+QPushButton#to_go_btn {
+    background-color: #2D2D2D;
+    color: #FFFFFF;
+    border: 3px solid #B38B00;
+}
+QPushButton#to_go_btn:hover {
+    background-color: #1F1F1F;
+    border-color: #E0B000;
+}
+
+/* Settings Button */
+QToolButton#settings_btn {
+    background: transparent;
+    border: none;
+    font: 700 22pt;
+    color: #2D2D2D;
+}
+QToolButton#settings_btn:hover {
+    color: #8C6A00;
+}
+
+/* Voice AI Button */
+QToolButton#voice_ai_btn {
+    font: 700 22pt;
+    color: #2D2D2D;
+    background-color: #FFFFFF;
+    border-radius: 22px;
+    padding: 6px;
+    border: 2px solid #B38B00;
+}
+QToolButton#voice_ai_btn:hover {
+    background-color: #FFF3B0;
+    color: #8C6A00;
+    border-color: #E0B000;
+}
+   </string>
+  </property>
+
+  <!-- === 메인 레이아웃 === -->
+  <layout class="QVBoxLayout" name="rootLayout" stretch="0,0,1,0">
+   <property name="spacing"><number>8</number></property>
+
+   <!-- 로고 -->
+   <item>
+    <layout class="QHBoxLayout" name="topLayout">
+     <item alignment="Qt::AlignCenter">
+      <widget class="QLabel" name="logo_label">
+       <property name="minimumSize"><size><width>0</width><height>140</height></size></property>
+       <property name="maximumSize"><size><width>16777215</width><height>180</height></size></property>
+       <property name="alignment"><set>Qt::AlignCenter</set></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+
+   <!-- 타이틀 -->
+   <item>
+    <widget class="QLabel" name="title_label">
+     <property name="minimumSize"><size><width>0</width><height>44</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>52</height></size></property>
+     <property name="text"><string>어서오세요 메가 커피입니다</string></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+    </widget>
+   </item>
+
+   <!-- 광고 -->
+   <item>
+    <widget class="QLabel" name="ad_label">
+     <property name="minimumSize"><size><width>0</width><height>320</height></size></property>
+     <property name="maximumSize"><size><width>16777215</width><height>380</height></size></property>
+     <property name="alignment"><set>Qt::AlignCenter</set></property>
+    </widget>
+   </item>
+
+   <!-- 하단 버튼 -->
+   <item>
+    <layout class="QHBoxLayout" name="bottomLayout">
+     <property name="spacing"><number>20</number></property>
+
+     <!-- 매장용 버튼 -->
+     <item>
+      <widget class="QPushButton" name="eat_here_btn">
+       <property name="minimumSize"><size><width>300</width><height>86</height></size></property>
+       <property name="text">
+        <string>🏠  매장에서 먹기</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="to_go_btn">
+       <property name="minimumSize"><size><width>300</width><height>86</height></size></property>
+       <property name="text">
+        <string>🥡  포장해서 가기</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+
+  <!-- 설정 버튼 (좌측 상단) -->
+  <widget class="QToolButton" name="settings_btn">
+   <property name="geometry"><rect><x>10</x><y>8</y><width>56</width><height>56</height></rect></property>
+   <property name="toolTip"><string>관리자 설정</string></property>
+   <property name="text"><string>⚙</string></property>
+   <property name="iconSize"><size><width>36</width><height>36</height></size></property>
+   <property name="autoRaise"><bool>true</bool></property>
+  </widget>
+
+  <!-- 대화형 AI 음성 주문 버튼 (우측 상단) -->
+  <widget class="QToolButton" name="voice_ai_btn">
+   <property name="geometry"><rect><x>702</x><y>8</y><width>56</width><height>56</height></rect></property>
+   <property name="toolTip"><string>대화형 AI 음성 주문</string></property>
+   <property name="text"><string>🎙</string></property>
+   <property name="iconSize"><size><width>36</width><height>36</height></size></property>
+   <property name="autoRaise"><bool>true</bool></property>
+  </widget>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -48,6 +48,10 @@
 ├── model/                 # (선택) 모델/캐시 폴더 (환경에 따라 사용)
 └── __pycache__/           # 파이썬 캐시 파일
 
+LLM UPDATE
+EEVE -> OPENAI(API)사용
+
+
 ## 링크 / 첨부
 
 - GitHub: (링크) : https://github.com/myshell-ai/MeloTTS.git
